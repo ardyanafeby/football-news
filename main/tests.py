@@ -144,47 +144,46 @@ class FootballNewsFunctionalTest(LiveServerTestCase):
         login_h1 = self.browser.find_element(By.TAG_NAME, "h1")
         self.assertEqual(login_h1.text, "Login")
 
-# Saya mengubah def test_create_news menjadi komentar supaya tidak terdapat error pada test tersebut, karena di bagian PARTIAL_LINK_TEXT "Add News" error terjadi.
-    # def test_create_news(self):
-    #     # Test create news functionality (requires login)
-    #     self.login_user()
+    def test_create_news(self):
+        # Test create news functionality (requires login)
+        self.login_user()
 
-    #     # Go to create news page
-    #     add_button = self.browser.find_element(By.PARTIAL_LINK_TEXT, "Add News")
-    #     add_button.click()
+        # Go to create news page
+        add_button = self.browser.find_element(By.PARTIAL_LINK_TEXT, "Add News")
+        add_button.click()
 
-    #     # Fill form
-    #     title_input = self.browser.find_element(By.NAME, "title")
-    #     content_input = self.browser.find_element(By.NAME, "content")
-    #     category_select = self.browser.find_element(By.NAME, "category")
-    #     thumbnail_input = self.browser.find_element(By.NAME, "thumbnail")
-    #     is_featured_checkbox = self.browser.find_element(By.NAME, "is_featured")
+        # Fill form
+        title_input = self.browser.find_element(By.NAME, "title")
+        content_input = self.browser.find_element(By.NAME, "content")
+        category_select = self.browser.find_element(By.NAME, "category")
+        thumbnail_input = self.browser.find_element(By.NAME, "thumbnail")
+        is_featured_checkbox = self.browser.find_element(By.NAME, "is_featured")
 
-    #     title_input.send_keys("Test News Title")
-    #     content_input.send_keys("Test news content for selenium testing")
-    #     thumbnail_input.send_keys("https://example.com/image.jpg")
+        title_input.send_keys("Test News Title")
+        content_input.send_keys("Test news content for selenium testing")
+        thumbnail_input.send_keys("https://example.com/image.jpg")
 
-    #     # Set category (select 'match' from dropdown)
+        # Set category (select 'match' from dropdown)
 
-    #     select = Select(category_select)
-    #     select.select_by_value("match")
+        select = Select(category_select)
+        select.select_by_value("match")
 
-    #     # Check is_featured checkbox
-    #     is_featured_checkbox.click()
+        # Check is_featured checkbox
+        is_featured_checkbox.click()
 
-    #     # Submit form
-    #     title_input.submit()
+        # Submit form
+        title_input.submit()
 
-    #     # Check if returned to main page and news appears
-    #     wait = WebDriverWait(self.browser, 120)
-    #     wait.until(EC.text_to_be_present_in_element((By.TAG_NAME, "h1"), "Football News"))
-    #     h1_element = self.browser.find_element(By.TAG_NAME, "h1")
-    #     self.assertEqual(h1_element.text, "Football News")
+        # Check if returned to main page and news appears
+        wait = WebDriverWait(self.browser, 120)
+        wait.until(EC.text_to_be_present_in_element((By.TAG_NAME, "h1"), "Football News"))
+        h1_element = self.browser.find_element(By.TAG_NAME, "h1")
+        self.assertEqual(h1_element.text, "Football News")
 
-    #     # Check if news title appears on page
-    #     wait.until(EC.element_to_be_clickable((By.PARTIAL_LINK_TEXT, "Test News Title")))
-    #     news_title = self.browser.find_element(By.PARTIAL_LINK_TEXT, "Test News Title")
-    #     self.assertTrue(news_title.is_displayed())
+        # Check if news title appears on page
+        wait.until(EC.element_to_be_clickable((By.PARTIAL_LINK_TEXT, "Test News Title")))
+        news_title = self.browser.find_element(By.PARTIAL_LINK_TEXT, "Test News Title")
+        self.assertTrue(news_title.is_displayed())
 
     def test_news_detail(self):
         # Test news detail page
